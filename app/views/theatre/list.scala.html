@@ -1,0 +1,16 @@
+@(directories: Array[java.io.File])
+
+<!DOCTYPE html>
+<html>
+    <head lang="ja">
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <ul>
+            @for(directory <- directories) {
+                <li><a href="@directory.toString">@directory.getName</a></li>
+            }
+        </ul>
+    </body>
+</html>
