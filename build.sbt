@@ -10,5 +10,6 @@ libraryDependencies ++= Seq(
   jdbc,
   anorm,
   cache,
-  ws
+  ws,
+  "net.sf.jacob-project" % "jacob" % "1.14.3"
 )

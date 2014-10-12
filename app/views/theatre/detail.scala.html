@@ -1,0 +1,17 @@
+@(files: Array[java.io.File])
+
+<!DOCTYPE html>
+<html>
+    <head lang="ja">
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <ul>
+            @for(file <- files if file.getName.endsWith("mp4")) {
+                <video src="@file.toString"></video>
+                <li><a href="@controllers.theatre.routes.Title.show(file.toString, "1")">@file.getName</a></li>
+            }
+        </ul>
+    </body>
+</html>
