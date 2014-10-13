@@ -2,7 +2,7 @@ package domains.service.tmpgencvmw
 
 import autoitx4java.AutoItX
 import java.io.File
-import com.typesafe.config.{Config, ConfigFactory}
+import com.typesafe.config.ConfigFactory
 
 object Assistant {
   // window
@@ -24,19 +24,30 @@ object Assistant {
   val x = new AutoItX()
   val config = ConfigFactory.load("private")
 
-  private def openNewProject = {
-    // Open TMPGEnc VMW5
+  /**
+   * TMPGEnc VMW5を起動する
+   */
+  private def launch() = {
     if (!x.winExists(windowStart)) {
       x.run(config.getString("tmpgencvmw.exe.path"))
       x.winWaitActive(windowStart)
     }
     x.winActivate(windowStart)
+  }
 
-    // Open New Project
+  /**
+   * 新規プロジェクトを開く
+   */
+  private def openNewProject() = {
     x.controlClick(windowStart, "", buttonNewProject)
     x.winWaitActive(windowMain)
   }
 
+  /**
+   * ファイルを追加する
+   *
+   * @param file 追加するファイル
+   */
   private def addFile(file: File) = {
     // Open an add file window
     x.winWaitActive(windowMain)
@@ -57,8 +68,14 @@ object Assistant {
     x.controlClick(windowEdit, "", buttonOk)
   }
 
+  /**
+   * 新規プロジェクトを作成しファイルを追加する
+   *
+   * @param files 追加するファイル
+   */
   def addFiles(files: List[File]) = {
-    openNewProject
+    launch()
+    openNewProject()
     files.map(addFile)
   }
 }
