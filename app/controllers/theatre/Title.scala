@@ -5,7 +5,7 @@ import java.io._
 import com.typesafe.config.{Config, ConfigFactory}
 
 object Title extends Controller {
-  val config: Config = ConfigFactory.load("theatre")
+  val config: Config = ConfigFactory.load("private")
   val rootDir: File = new File(config.getString("theatre.directory.root"))
 
   def list = Action {

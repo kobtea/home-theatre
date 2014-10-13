@@ -16,4 +16,4 @@ dist
 lib
 
 # private configs
-conf/theatre.conf
+conf/private.conf
