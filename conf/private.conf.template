@@ -1,3 +1,5 @@
 theatre.directory.root = "/path/to/dir"
 
 tmpgencvmw.exe.path = "/path/to/exe"
+
+path.trash = "/path/to/dir"
